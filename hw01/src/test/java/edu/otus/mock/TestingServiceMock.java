@@ -1,4 +1,4 @@
-package edu.otus.service.mock;
+package edu.otus.mock;
 
 import edu.otus.dao.QuestionsDAO;
 import edu.otus.service.TestingServiceImpl;

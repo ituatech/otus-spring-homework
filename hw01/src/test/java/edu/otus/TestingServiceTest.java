@@ -15,7 +15,7 @@ public class TestingServiceTest {
 
     @Before
     public void init() {
-        context = new ClassPathXmlApplicationContext("/spring-context.xml");
+        context = new ClassPathXmlApplicationContext("/spring-context-test.xml");
     }
 
     @Test
