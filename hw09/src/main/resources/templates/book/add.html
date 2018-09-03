@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Add book</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"
+          th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}">
+
+    <script src="/webjars/jquery/1.11.1/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous" th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            var next = 1;
+            $(".add-more-author").click(function(e){
+                e.preventDefault();
+                var addto = "#field" + next;
+                var addRemove = "#field" + (next);
+                next = next + 1;
+                var newIn = '<input type="text" class="text-input" id="field' + next + '"  name="authors"/>';
+                var newInput = $(newIn);
+                var removeBtn = '<button id="remove' + (next - 1) + '" class="btn btn-danger remove-me" >-</button></div><div id="field">';
+                var removeButton = $(removeBtn);
+                $(addto).after(newInput);
+                $(addRemove).after(removeButton);
+                $("#field" + next).attr('data-source',$(addto).attr('data-source'));
+                $("#count").val(next);
+
+                $('.remove-me').click(function(e){
+                    e.preventDefault();
+                    var fieldNum = this.id.charAt(this.id.length-1);
+                    var fieldID = "#field" + fieldNum;
+                    $(this).remove();
+                    $(fieldID).remove();
+                });
+            });
+        });
+
+        $(document).ready(function(){
+            var next = 1;
+            $(".add-more-genre").click(function(e){
+                e.preventDefault();
+                var addto = "#gfield" + next;
+                var addRemove = "#gfield" + (next);
+                next = next + 1;
+                var newIn = '<input type="text" class="text-input" id="gfield' + next + '"  name="genres"/>';
+                var newInput = $(newIn);
+                var removeBtn = '<button id="gremove' + (next - 1) + '" class="btn btn-danger gremove-me" >-</button></div><div id="gfield">';
+                var removeButton = $(removeBtn);
+                $(addto).after(newInput);
+                $(addRemove).after(removeButton);
+                $("#gfield" + next).attr('data-source',$(addto).attr('data-source'));
+                $("#count").val(next);
+
+                $('.gremove-me').click(function(e){
+                    e.preventDefault();
+                    var fieldNum = this.id.charAt(this.id.length-1);
+                    var fieldID = "#gfield" + fieldNum;
+                    $(this).remove();
+                    $(fieldID).remove();
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="container-fluid" style="margin-top: 20px">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <form th:object="${book}" th:action="@{/books/add}" method="post">
+                <div class="pannel-group">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h1 class="panel-title">Save Book Information</h1>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-3 form-group">
+                                    <label>Title:</label>
+                                    <input type="text" class="text-input"  th:field="*{title}" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 form-group">
+                                    <label>Description:</label>
+                                    <input type="text" class="text-input" th:field="*{description}" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 form-group">
+                                    <label>Authors:</label>
+                                    <div class="container">
+                                        <div class="row">
+                                            <input type="text" class="text-input" id="field1"  th:field="*{authors}"/>
+                                            <button id="b1" class="btn add-more-author" type="button">+</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 form-group">
+                                    <label>Genres:</label>
+                                    <div class="container">
+                                        <div class="row">
+                                            <input type="text" class="text-input" id="gfield1"  th:field="*{genres}"/>
+                                            <button id="b2" class="btn add-more-genre" type="button">+</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
