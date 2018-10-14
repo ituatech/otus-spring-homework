@@ -1,0 +1,25 @@
+insert into ADDRESS (city, street, building_number) values ('MSK', 'Lenina', 1);
+insert into ADDRESS (city, street, building_number) values ('SPB', 'Nevsky', 15);
+insert into ADDRESS (city, street, building_number) values ('NUR', 'Zapadnay', 45);
+insert into ADDRESS (city, street, building_number) values ('MSK1', 'Lenina', 1);
+insert into ADDRESS (city, street, building_number) values ('SPB1', 'Nevsky', 15);
+insert into ADDRESS (city, street, building_number) values ('NUR1', 'Zapadnay', 45);
+insert into ADDRESS (city, street, building_number) values ('MSK2', 'Lenina', 1);
+insert into ADDRESS (city, street, building_number) values ('SPB2', 'Nevsky', 15);
+insert into ADDRESS (city, street, building_number) values ('NUR2', 'Zapadnay', 45);
+insert into ADDRESS (city, street, building_number) values ('MSK3', 'Lenina', 1);
+insert into ADDRESS (city, street, building_number) values ('SPB3', 'Nevsky', 15);
+insert into ADDRESS (city, street, building_number) values ('NUR3', 'Zapadnay', 45);
+
+insert into PERSON (name, age) values ('Vasya', 15);
+insert into PERSON (name, age) values ('Petya', 23);
+insert into PERSON (name, age) values ('Vova', 45);
+insert into PERSON (name, age) values ('Vasya1', 15);
+insert into PERSON (name, age) values ('Petya1', 23);
+insert into PERSON (name, age) values ('Vova1', 45);
+insert into PERSON (name, age) values ('Vasya2', 15);
+insert into PERSON (name, age) values ('Petya2', 23);
+insert into PERSON (name, age) values ('Vova2', 45);
+insert into PERSON (name, age) values ('Vasya3', 15);
+insert into PERSON (name, age) values ('Petya3', 23);
+insert into PERSON (name, age) values ('Vova3', 45);
