@@ -33,7 +33,7 @@ public class BookController {
     @GetMapping({"/", "books"})
     public String list(Model model) {
         model.addAttribute("books", bookService.getAll());
-        return "/book/list";
+        return "book/list";
     }
 
     @GetMapping("/books/{id}/show")
@@ -41,14 +41,14 @@ public class BookController {
                        Model model) {
         Book book = bookService.getById(id);
         model.addAttribute("book", book);
-        return "/book/view";
+        return "book/view";
     }
 
     @GetMapping("/books/add")
     public String addForm(Model model) {
         Book book = new Book();
         model.addAttribute("book", book);
-        return "/book/add";
+        return "book/add";
     }
 
     @GetMapping("/books/{id}/delete")
@@ -63,7 +63,7 @@ public class BookController {
                          Model model) {
         Book book = bookService.getById(id);
         model.addAttribute("book", book);
-        return "/book/update";
+        return "book/update";
     }
 
     @PostMapping("books/add")
@@ -73,7 +73,7 @@ public class BookController {
             bindingResult.getAllErrors().forEach(objectError -> {
                 log.debug(objectError.toString());
             });
-            return "/book/list";
+            return "book/list";
         }
         Book savedBook = bookService.add(book);
         return "redirect:/books/" + savedBook.getId() + "/show";
@@ -85,7 +85,7 @@ public class BookController {
                               Model model) {
         model.addAttribute("id", id);
         model.addAttribute("comment", new Comment() {{setUserName("user name");}});
-        return "/comment/add";
+        return "comment/add";
     }
 
     @PostMapping("/books/{id}/comments")
@@ -96,7 +96,7 @@ public class BookController {
             bindingResult.getAllErrors().forEach(objectError -> {
                 log.debug(objectError.toString());
             });
-            return "/book/list";
+            return "book/list";
         }
         Book savedBook = bookService.addComment(id, comment);
         return "redirect:/books/" + savedBook.getId() + "/show";
